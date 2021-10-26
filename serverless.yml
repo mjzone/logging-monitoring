@@ -13,3 +13,14 @@ functions:
       - http:
           path: generate/{number}
           method: get
+
+  logProcessor:
+    handler: logProcessor.handler
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "ses:*"
+        Resource: "*"
+
+plugins:
+  - serverless-iam-roles-per-function
